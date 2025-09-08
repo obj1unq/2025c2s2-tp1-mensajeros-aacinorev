@@ -1,0 +1,33 @@
+import mensajeros.*
+
+test "Primera prueba"{
+    paquete.destino(laMatrix)
+    paquete.mensajero(neo)
+    assert.notThat(paquete.puedeSerEntregado())
+}
+
+test "Segunda prueba"{
+    paquete.estaPago(true)
+    paquete.mensajero(jeanGray)
+    paquete.destino(laMatrix)
+    assert.that(paquete.puedeSerEntregado())
+}
+
+test "Tercera prueba"{
+    paquete.estaPago(true)
+    paquete.destino(puenteBrooklyn)
+    paquete.mensajero(saraConnor)
+    saraConnor.pesoPropio(70)
+    saraConnor.vehiculo(camion)
+    camion.acoplados(1)
+    assert.notThat(paquete.puedeSerEntregado())
+}
+
+test "Cuarta prueba"{
+    paquete.estaPago(true)
+    paquete.destino(puenteBrooklyn)
+    paquete.mensajero(saraConnor)
+    saraConnor.pesoPropio(70)
+    saraConnor.vehiculo(moto)
+    assert.that(paquete.puedeSerEntregado())
+}

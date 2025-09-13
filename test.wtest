@@ -1,33 +1,25 @@
 import mensajeros.*
 
-test "Primera prueba"{
-    paquete.destino(laMatrix)
-    paquete.mensajero(neo)
-    assert.notThat(paquete.puedeSerEntregado())
+test "El paquete no está pago"{
+    assert.notThat(paquete.puedeSerEntregado(laMatrix,neo))
 }
 
-test "Segunda prueba"{
+test "El paquete está pago, y lo entrega Jean a la Matrix"{
     paquete.estaPago(true)
-    paquete.mensajero(jeanGray)
-    paquete.destino(laMatrix)
-    assert.that(paquete.puedeSerEntregado())
+    assert.that(paquete.puedeSerEntregado(laMatrix, jeanGray))
 }
 
-test "Tercera prueba"{
+test "El paquete está pago pero no se puede llevar porque se supera el peso del puente"{
     paquete.estaPago(true)
-    paquete.destino(puenteBrooklyn)
-    paquete.mensajero(saraConnor)
     saraConnor.pesoPropio(70)
     saraConnor.vehiculo(camion)
     camion.acoplados(1)
-    assert.notThat(paquete.puedeSerEntregado())
+    assert.notThat(paquete.puedeSerEntregado(puenteBrooklyn, saraConnor))
 }
 
-test "Cuarta prueba"{
+test "El paquete está pago y puede llevarse por Sara Connor en moto"{
     paquete.estaPago(true)
-    paquete.destino(puenteBrooklyn)
-    paquete.mensajero(saraConnor)
     saraConnor.pesoPropio(70)
     saraConnor.vehiculo(moto)
-    assert.that(paquete.puedeSerEntregado())
+    assert.that(paquete.puedeSerEntregado(puenteBrooklyn, saraConnor))
 }

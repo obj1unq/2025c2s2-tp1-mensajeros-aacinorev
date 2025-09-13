@@ -1,9 +1,7 @@
 object paquete {
-    var property mensajero = jeanGray
-    var property destino = puenteBrooklyn
     var property estaPago = false
 
-    method puedeSerEntregado(){
+    method puedeSerEntregado(destino, mensajero){
         return estaPago && destino.puedePasar(mensajero)
     }
 
@@ -26,7 +24,7 @@ object neo {
 }
 
 object jeanGray {
-
+    
     method puedeLlamar(){
         return true
     }
@@ -69,7 +67,7 @@ object moto {
 object puenteBrooklyn {
 
     method puedePasar(mensajero){
-        return mensajero.peso() < 1000 && paquete.estaPago()
+        return mensajero.peso() < 1000
     }
 
 }
@@ -77,7 +75,7 @@ object puenteBrooklyn {
 object laMatrix {
 
     method puedePasar(mensajero){
-        return mensajero.puedeLlamar() && paquete.estaPago()
+        return mensajero.puedeLlamar()
     }
 
 }
